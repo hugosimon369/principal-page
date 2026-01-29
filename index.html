@@ -3,108 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Desarrollador Frontend</title>
-    <link rel="stylesheet" href="">
+    <title>Hugo Simon - Frontend Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #4164ff;
+            --secondary: #764ba2;
+            --dark: #2d3748;
+            --light: #f7fafc;
+            --text: #4a5568;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
+            font-family:  'Poppins', sans-serif;
+            color: var(--text);
             line-height: 1.6;
+            background-color: #fff;
         }
 
+        /* HEADER MEJORADO */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            position: relative;
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        header p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            font-size: 1rem;
-            border: 2px solid white;
-            border-radius: 5px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s;
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
             cursor: pointer;
+            font-weight: bold;
+            border: 1px solid white;
+            transition: 0.3s;
+        }
+        .lang-switch:hover { background: white; color: var(--primary); }
+
+        header h1 { font-size: 3rem; margin-bottom: 10px; font-weight: 600; }
+        header p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; font-weight: 300; }
+
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; }
+        
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
         }
 
-        .btn:hover {
-            background-color: white;
-            color: #667eea;
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
         }
 
-        .tech-stack {
-            padding: 60px 20px;
-            background-color: #f8f9fa;
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* PROYECTOS (Grid limpio) */
+        .section-title {
             text-align: center;
-        }
-
-        .tech-stack h2 {
             font-size: 2rem;
-            margin-bottom: 40px;
+            color: var(--dark);
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            margin: 10px auto;
         }
 
-        .tech-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .tech-icon {
-            font-size: 3rem;
-            transition: transform 0.3s;
-        }
-
-        .tech-icon:hover {
-            transform: scale(1.2);
-        }
-
-        .projects {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .projects h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
+        .projects { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -112,141 +99,165 @@
         }
 
         .project-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
 
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #667eea;
-            background-color: #f8f9fa;
-            text-align: center;
-            border-radius: 15px;
-        }
-
-        .project-card p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        .project-card a.btn {
-            max-width: max-content;
-            align-self: center;
-        }
-
-        .about {
-            background-color: #f8f9fa;
-            padding: 60px 20px;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .about p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        footer {
-            background-color: #333;
+        .project-card h3 { color: var(--dark); margin-bottom: 10px; }
+        .project-card p { font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+        
+        .card-btn {
+            align-self: flex-start;
+            background: var(--primary);
             color: white;
-            text-align: center;
-            padding: 20px;
+            font-size: 0.9rem;
+            padding: 8px 20px;
         }
+        .card-btn:hover { background: var(--secondary); color: white; }
 
+        /* TECH STACK */
+        .tech-stack { background: var(--light); padding: 60px 20px; margin-top: 60px; text-align: center; }
+        .tech-icons { 
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; 
+            font-size: 3rem; color: var(--dark);
+        }
+        .tech-icon i { transition: 0.3s; }
+        .tech-icon i:hover { color: var(--primary); transform: scale(1.1); }
+
+        /* ABOUT & FOOTER */
+        .about { max-width: 800px; margin: 60px auto; text-align: center; padding: 0 20px; }
+        footer { background: var(--dark); color: white; text-align: center; padding: 20px; margin-top: 60px; font-size: 0.9rem; }
+
+        /* MOBILE */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
+            header h1 { font-size: 2.2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 250px; text-align: center; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Hugo Andres Simon Alvarez</h1>
-        <p>Desarrollador Frontend (React) | Futuro Creador de Videojuegos</p>
+        <button class="lang-switch" onclick="toggleLanguage()">🇺🇸 EN / ES 🇪🇸</button>
+        
+        <h1 id="hero-title">Hugo Andres Simon Alvarez</h1>
+        <p id="hero-subtitle">Desarrollador Frontend (React) | Entusiasta del Game Dev</p>
+        
         <div class="cta-buttons">
-            <a href="https://www.linkedin.com/in/hugo-andres-simon-alvarez-02876b256/" class="btn">LinkedIn</a>
-            <a href="https://github.com/hugosimon369" class="btn">GitHub</a>
-            <a href="#cv" class="btn">Descargar CV</a>
+            <a href="https://www.linkedin.com/in/hugo-andres-simon-alvarez-02876b256/" class="btn btn-primary" target="_blank">LinkedIn</a>
+            <a href="https://github.com/hugosimon369" class="btn btn-outline" target="_blank">GitHub</a>
+            <a href="#" class="btn btn-outline" id="btn-cv">Descargar CV</a>
         </div>
     </header>
 
     <section class="projects">
-        <h2>Proyectos</h2>
+        <h2 class="section-title" id="projects-title">Proyectos Destacados</h2>
         <div class="projects-grid">
+            
             <article class="project-card">
-                <h3>Typing-Pong</h3>
-                <p>Juego de mecanografía con lógica compleja y estados en tiempo real. Mi proyecto estrella.</p>
-                <a class="btn" href="http://typing-pong.netlify.app/">web</a>
+                <h3>🕹️ Typing-Pong</h3>
+                <p data-key="descPong">Juego de mecanografía con lógica compleja y estados en tiempo real. Un desafío técnico que combina UX de videojuegos con lógica web.</p>
+                <a class="btn card-btn" href="http://typing-pong.netlify.app/" target="_blank">Demo Live</a>
             </article>
+
             <article class="project-card">
-                <h3>Games-Database</h3>
-                <p>Consumo de API externa, asincronía y filtrado de datos.</p>
-                <a class="btn" href="http://games-top.netlify.app/">web</a>
+                <h3>🔍 Games-Database</h3>
+                <p data-key="descGames">Aplicación SPA que consume APIs externas. Implementa búsqueda asíncrona, filtrado dinámico y manejo eficiente de datos.</p>
+                <a class="btn card-btn" href="http://games-top.netlify.app/" target="_blank">Demo Live</a>
             </article>
+
             <article class="project-card">
-                <h3>Agendaza (to do app)</h3>
-                <p>Aplicación de productividad con persistencia de datos (CRUD), hecho con react usando estados de guardado local.</p>
-                <a class="btn" href="http://agendaza.netlify.app/">web</a>
+                <h3>📅 Agendaza (To-Do)</h3>
+                <p data-key="descTodo">Herramienta de productividad con operaciones CRUD completas. Persistencia de datos local (LocalStorage) y gestión de estado optimizada.</p>
+                <a class="btn card-btn" href="http://agendaza.netlify.app/" target="_blank">Demo Live</a>
             </article>
+
         </div>
     </section>
 
     <section class="tech-stack">
-        <h2>Herramientas</h2>
+        <h2 class="section-title" id="stack-title">Arsenal Tecnológico</h2>
         <div class="tech-icons">
-            <div class="tech-icon">📄</div>
-            <div class="tech-icon">🎨</div>
-            <div class="tech-icon">⚙️</div>
-            <img class="tech-icon" src="/react.svg" alt="react" title="react"></img>
-            <img class="tech-icon" src="vite.svg"></img>
-            <div class="tech-icon">🔧</div>
+            <div class="tech-icon" title="HTML5"><i class="devicon-html5-plain"></i></div>
+            <div class="tech-icon" title="CSS3"><i class="devicon-css3-plain"></i></div>
+            <div class="tech-icon" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
+            <div class="tech-icon" title="React"><i class="devicon-react-original"></i></div>
+            <div class="tech-icon" title="Git"><i class="devicon-git-plain"></i></div>
+            <div class="tech-icon" title="Vite"><i class="devicon-vitejs-plain"></i></div>
         </div>
     </section>
 
-
     <section class="about">
-        <div class="about-content">
-            <h2>Sobre Mí</h2>
-            <p>Me especializo en React y desarrollo web con un enfoque disciplinado. Mi pasión es resolver problemas lógicos complejos, inspirada en mi interés por el desarrollo de videojuegos.</p>
-        </div>
+        <h2 class="section-title" id="about-title">Sobre Mí</h2>
+        <p id="about-text">
+            Me especializo en construir interfaces React limpias y funcionales. Mi enfoque combina la disciplina del código estructurado con la creatividad de la resolución de problemas lógicos, una habilidad que cultivo a través de mi pasión por el desarrollo de videojuegos.
+        </p>
     </section>
 
     <footer>
-        <p>&copy; 2026 HASA. Casi ningun derecho reservado.</p>
+        <p>&copy; 2026 HASA. Code & Discipline.</p>
     </footer>
+
+    <script>
+        // Lógica simple para cambiar idioma
+        let currentLang = 'es';
+
+        const translations = {
+            es: {
+                heroSubtitle: "Desarrollador Frontend (React) | Entusiasta del Game Dev",
+                btnCv: "Descargar CV",
+                projectsTitle: "Proyectos Destacados",
+                descPong: "Juego de mecanografía con lógica compleja y estados en tiempo real. Un desafío técnico que combina UX de videojuegos con lógica web.",
+                descGames: "Aplicación SPA que consume APIs externas. Implementa búsqueda asíncrona, filtrado dinámico y manejo eficiente de datos.",
+                descTodo: "Herramienta de productividad con operaciones CRUD completas. Persistencia de datos local (LocalStorage) y gestión de estado optimizada.",
+                stackTitle: "Arsenal Tecnológico",
+                aboutTitle: "Sobre Mí",
+                aboutText: "Me especializo en construir interfaces React limpias y funcionales. Mi enfoque combina la disciplina del código estructurado con la creatividad de la resolución de problemas lógicos, una habilidad que cultivo a través de mi pasión por el desarrollo de videojuegos."
+            },
+            en: {
+                heroSubtitle: "Frontend Developer (React) | Game Dev Enthusiast",
+                btnCv: "Download CV",
+                projectsTitle: "Featured Projects",
+                descPong: "Typing game featuring complex logic and real-time state management. A technical challenge blending game UX with modern web logic.",
+                descGames: "SPA application consuming external APIs. Implements asynchronous search, dynamic filtering, and efficient data handling.",
+                descTodo: "Productivity tool with full CRUD operations. Features local data persistence (LocalStorage) and optimized state management.",
+                stackTitle: "Tech Arsenal",
+                aboutTitle: "About Me",
+                aboutText: "I specialize in building clean, functional React interfaces. My approach combines disciplined code structure with creative problem-solving, a skill I cultivate through my passion for game development."
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            const t = translations[currentLang];
+
+            // Actualizar textos
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('btn-cv').textContent = t.btnCv;
+            document.getElementById('projects-title').textContent = t.projectsTitle;
+            document.getElementById('stack-title').textContent = t.stackTitle;
+            document.getElementById('about-title').textContent = t.aboutTitle;
+            document.getElementById('about-text').textContent = t.aboutText;
+
+            // Actualizar descripciones por atributo data-key
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (t[key]) el.textContent = t[key];
+            });
+        }
+    </script>
 </body>
 </html>
